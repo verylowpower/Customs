@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PackageManager : MonoBehaviour
@@ -11,9 +12,15 @@ public class PackageManager : MonoBehaviour
     }
 
     public PackageSet[] packages;
+    public static PackageManager instance;
 
     [HideInInspector] public GameObject currentNote;
     [HideInInspector] public GameObject currentNews;
+
+   
+    private GameObject currentPackage;
+
+    void Start() => instance = this;
 
     public void AutoAssignPackages(GameObject dayRoot)
     {
@@ -23,21 +30,22 @@ public class PackageManager : MonoBehaviour
             return;
         }
 
-        var list = new System.Collections.Generic.List<PackageSet>();
+        var list = new List<PackageSet>();
 
         foreach (Transform package in dayRoot.transform)
         {
-            var canvas = package.Find("Canvas Full Screen");
-            if (canvas == null) continue;
-
-            var note = canvas.Find("Note")?.gameObject;
-            var news = canvas.Find("News")?.gameObject;
+            var anchor = package.GetComponent<PackageAnchor>();
+            if (anchor == null)
+            {
+                Debug.LogWarning("Package missing PackageAnchor: " + package.name);
+                continue;
+            }
 
             list.Add(new PackageSet
             {
                 packageObject = package.gameObject,
-                noteObject = note,
-                newsObject = news
+                noteObject = anchor.noteObject,
+                newsObject = anchor.newsObject
             });
         }
 
@@ -47,6 +55,13 @@ public class PackageManager : MonoBehaviour
 
     public void SetCurrentPackage(GameObject activePackage)
     {
+      
+        if (activePackage == currentPackage)
+        {
+            Debug.Log($"[PackageManager] Package {activePackage.name} is already active, skipping.");
+            return;
+        }
+
         PackageSet foundSet = null;
 
         foreach (var set in packages)
@@ -59,6 +74,7 @@ public class PackageManager : MonoBehaviour
 
         if (foundSet != null)
         {
+            currentPackage = foundSet.packageObject;
             currentNote = foundSet.noteObject;
             currentNews = foundSet.newsObject;
 
@@ -66,13 +82,12 @@ public class PackageManager : MonoBehaviour
             if (currentNews != null) currentNews.SetActive(false);
 
             Debug.Log($"[PackageManager] Switched to package {foundSet.packageObject.name}");
-            Debug.Log($"Note Object: {currentNote?.name}, in Scene: {currentNote?.scene.name}");
-            Debug.Log($"News Object: {currentNews?.name}, in Scene: {currentNews?.scene.name}");
         }
         else
         {
             currentNote = null;
             currentNews = null;
+            currentPackage = null;
             Debug.LogWarning("No matching package found for: " + activePackage.name);
         }
     }

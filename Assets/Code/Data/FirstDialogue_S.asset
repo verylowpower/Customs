@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba06ef259a362ff46bd99b834ec3d3a2, type: 3}
+  m_Name: FirstDialogue_S
+  m_EditorClassIdentifier: 
+  lines:
+  - speakerName: S
+    sentence: Sigh... Another long day at the border.
+    onLineEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - speakerName: S
+    sentence: "Time to check more suspicious packages\u2026 again."
+    onLineEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - speakerName: S
+    sentence: With how tense things are lately, keeping this place in order really
+      matters.
+    onLineEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - speakerName: S
+    sentence: "I may be tired, but it\u2019s my job to stop anything illegal from
+      slipping through."
+    onLineEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - speakerName: S
+    sentence: "Let\u2019s take a look at what\u2019s come in today."
+    onLineEvent:
+      m_PersistentCalls:
+        m_Calls: []

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Goat simulator ailen
+* source:	https://sketchfab.com/3d-models/goat-simulator-ailen-79fb7c137db745988aaa763f7931ff35
+* author:	nicholasklang03 (https://sketchfab.com/nicholasklang03)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Goat simulator ailen" (https://sketchfab.com/3d-models/goat-simulator-ailen-79fb7c137db745988aaa763f7931ff35) by nicholasklang03 (https://sketchfab.com/nicholasklang03) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

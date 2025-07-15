@@ -11,6 +11,24 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/AdoEnding.unity
+    guid: a032b8aa2200c6f49b37a04ac132f0cf
+  - enabled: 1
+    path: Assets/Scenes/DeathEnding.unity
+    guid: 68a8b9623780f224b9d21e7d2c1c2c40
+  - enabled: 1
+    path: Assets/Scenes/NormalEnding.unity
+    guid: 8ac1e47d9e53ed649a63d0fcce45f7cf
+  - enabled: 1
+    path: Assets/Scenes/PrisonEnding.unity
+    guid: eba8af5739959d54baf15e7393f34ea4
+  - enabled: 1
+    path: Assets/Scenes/PromoteEnding.unity
+    guid: 5588dbc144e8da14abb53d0e45f1ca77
+  - enabled: 1
+    path: Assets/Scenes/SchrodingerEnding.unity
+    guid: 8f9640f97efa762458fc74db224daa61
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

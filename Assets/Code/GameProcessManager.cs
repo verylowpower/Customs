@@ -12,10 +12,28 @@ public class GameProgressManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            //DontDestroyOnLoad(gameObject);
-            foreach (EndingType type in System.Enum.GetValues(typeof(EndingType)))
-                endingPoints[type] = 0;
+            //DontDestroyOnLoad(gameObject); 
+            InitEndingPoints();
         }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void InitEndingPoints()
+    {
+        endingPoints.Clear(); 
+        foreach (EndingType type in System.Enum.GetValues(typeof(EndingType)))
+        {
+            endingPoints[type] = 0;
+        }
+    }
+
+    public void ResetProgress()
+    {
+        InitEndingPoints(); 
+        Debug.Log("GameProgressManager: Progress reset.");
     }
 
     public void AddPoint(EndingType type, int amount = 1)
@@ -28,9 +46,9 @@ public class GameProgressManager : MonoBehaviour
         Debug.Log($"{type} +{amount} => {endingPoints[type]}");
     }
 
-    public string GetEnding()
+    public EndingType GetEndingType()
     {
         var max = endingPoints.OrderByDescending(e => e.Value).First();
-        return max.Key.ToString() + " Ending";
+        return max.Key;
     }
 }

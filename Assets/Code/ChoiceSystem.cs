@@ -1,5 +1,4 @@
 using UnityEngine;
-
 public class ChoiceSystem : MonoBehaviour
 {
     public static ChoiceSystem instance;
@@ -21,7 +20,6 @@ public class ChoiceSystem : MonoBehaviour
         Debug.Log("Pass");
         choosePass = true;
 
-        // Nếu chưa mở package → skip pass
         if (currentChoice != null && currentChoice.linkedObject != null && !currentChoice.linkedObject.openedPackage)
         {
             currentChoice.ChooseSkipPass();
@@ -29,24 +27,37 @@ public class ChoiceSystem : MonoBehaviour
         else
         {
             currentChoice?.ChoosePass();
+
+            if (currentChoice?.linkedObject?.openedPackage == true)
+            {
+                ObjectViewer.instance?.HideModel();
+                currentChoice.linkedObject.isViewingModel = false;
+            }
         }
     }
+
 
     public void OnDenyPressed()
-    {
-        Debug.Log("Deny");
-        chooseDeny = true;
+{
+    Debug.Log("Deny");
+    chooseDeny = true;
 
-        // Nếu chưa mở package → skip deny
-        if (currentChoice != null && currentChoice.linkedObject != null && !currentChoice.linkedObject.openedPackage)
+    if (currentChoice != null && currentChoice.linkedObject != null && !currentChoice.linkedObject.openedPackage)
+    {
+        currentChoice.ChooseSkipDeny();
+    }
+    else
+    {
+        currentChoice?.ChooseDeny();
+       
+        if (currentChoice?.linkedObject?.openedPackage == true)
         {
-            currentChoice.ChooseSkipDeny();
-        }
-        else
-        {
-            currentChoice?.ChooseDeny();
+            ObjectViewer.instance?.HideModel();
+            currentChoice.linkedObject.isViewingModel = false;
         }
     }
+}
+
 
     public void ClearChoices()
     {

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Ucat (ЪУЪ Cat or ЪЫЪ Cat)
+* source:	https://sketchfab.com/3d-models/ucat-cat-or-cat-de41bd91bcdb4a70a412c377bff03388
+* author:	fovlaxcorp (https://sketchfab.com/fovlaxcorp)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Ucat (ЪУЪ Cat or ЪЫЪ Cat)" (https://sketchfab.com/3d-models/ucat-cat-or-cat-de41bd91bcdb4a70a412c377bff03388) by fovlaxcorp (https://sketchfab.com/fovlaxcorp) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

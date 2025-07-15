@@ -2,28 +2,67 @@ using UnityEngine;
 
 public class PackageInteractive : MonoBehaviour
 {
-    public Animator animator;
+    public static PackageInteractive instance;
+
+    [Header("3D Model Viewer")]
+    public GameObject modelPrefab;
+    public Transform modelSpawnPoint;
+
+    [Header("Dialogue & Object")]
     public DialogueData packageDialogue;
     public ChoiceEvent choiceEvent;
+
     public bool openedPackage = false;
+    public bool isOpen = false;
+    public bool isViewingModel = false;
+
+    void Start() => instance = this;
 
     void OnMouseDown()
     {
-        // block mouse click when dialogue is running
-        if (DialogueManager.instance.isTalking) return;
+        if (DialogueManager.instance.isTalking
+            || NoteViewerButton.instance?.isOn == true
+            || NewsViewerButton.instance?.isOn == true)
+            return;
 
         Debug.Log("CLICKED: " + gameObject.name);
 
 
-        if (animator != null)
-            animator.SetBool("isPlaying", true);
+        if (!isOpen)
+        {
+            if (ObjectViewer.instance != null && modelPrefab != null)
+            {
+                ObjectViewer.instance.ShowModel(modelPrefab);
+                isViewingModel = true;
+            }
 
-        // show package dialogue
-        if (packageDialogue != null)
-            DialogueManager.instance.StartDialogue(packageDialogue);
+            if (packageDialogue != null)
+                DialogueManager.instance.StartDialogue(packageDialogue);
 
-        openedPackage = true;
-        Debug.Log($"{gameObject.name} opened ");
+            openedPackage = true;
+            isOpen = true;
+            Debug.Log($"{gameObject.name} opened");
+        }
+        else
+        {
 
+            ObjectViewer.instance?.HideModel();
+            isViewingModel = false;
+            isOpen = false;
+            //openedPackage = false;
+            Debug.Log($"{gameObject.name} closed");
+        }
+    }
+
+
+    void Update()
+    {
+        if (isViewingModel && Input.GetKeyDown(KeyCode.E))
+        {
+            ObjectViewer.instance?.HideModel();
+            isViewingModel = false;
+            Debug.Log($"{gameObject.name} viewer closed");
+        }
     }
 }
+

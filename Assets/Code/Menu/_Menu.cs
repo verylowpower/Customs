@@ -5,14 +5,22 @@ public class Menu : MonoBehaviour
 {
     public void StartButton()
     {
-        SceneManager.LoadSceneAsync(1);
+        if (GameProgressManager.instance != null)
+            GameProgressManager.instance.ResetProgress(); 
+
+        SceneManager.LoadSceneAsync(1); 
         Time.timeScale = 1f;
     }
 
     public void MenuButton()
     {
         SceneManager.LoadScene("Menu", LoadSceneMode.Additive);
-        //Pause.instance.isPaused = false;
+
+        if (DialogueManager.instance != null)
+            DialogueManager.instance.dialoguePanel.SetActive(false);
+
+        if (UIManager.instance != null && UIManager.instance.dayText != null)
+            UIManager.instance.dayText.gameObject.SetActive(false);
     }
 
     public void ResumeButton()

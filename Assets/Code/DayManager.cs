@@ -7,7 +7,6 @@ public class DayManager : MonoBehaviour
 
     public int currentDay = 0;
     public List<DayData> days;
-
     private GameObject currentDayObject;
     private PackageManager packageManager;
 
@@ -67,9 +66,14 @@ public class DayManager : MonoBehaviour
     {
         currentDay++;
         if (currentDay < days.Count)
+        {
             LoadDay(currentDay);
+        }
         else
-            Debug.Log("No more days. Show ending?");
+        {
+            Debug.Log("No more days. Showing ending...");
+            EndingManager.instance.ShowEnding();
+        }
     }
 
     public void NextPackage()
@@ -79,4 +83,6 @@ public class DayManager : MonoBehaviour
         packageIndex = (packageIndex + 1) % packageManager.packages.Length;
         packageManager.SetCurrentPackage(packageManager.packages[packageIndex].packageObject);
     }
+
+
 }

@@ -3,31 +3,50 @@ using UnityEngine.SceneManagement;
 
 public class EndingManager : MonoBehaviour
 {
+    public static EndingManager instance;
+
+    void Start()
+    {
+        instance = this;
+        DontDestroyOnLoad(gameObject); 
+    }
+
     public void ShowEnding()
     {
-        string ending = GameProgressManager.instance.GetEnding();
+        EndingType ending = GameProgressManager.instance.GetEndingType();
         Debug.Log("Ending: " + ending);
+
+        string sceneToLoad;
 
         switch (ending)
         {
-            case "Prison Ending":
-                SceneManager.LoadScene("PrisonEnding");
+            case EndingType.Prison:
+                sceneToLoad = "PrisonEnding";
                 break;
-            case "Promote Ending":
-                SceneManager.LoadScene("PromoteEnding");
+            case EndingType.Promote:
+                sceneToLoad = "PromoteEnding";
                 break;
-            case "Death Ending":
-                SceneManager.LoadScene("DeathEnding");
+            case EndingType.Death:
+                sceneToLoad = "DeathEnding";
                 break;
-            case "Schrodinger Ending":
-                SceneManager.LoadScene("SchrodingerEnding");
+            case EndingType.Schrodinger:
+                sceneToLoad = "SchrodingerEnding";
                 break;
-            case "Ado Ending":
-                SceneManager.LoadScene("AdoEnding");
+            case EndingType.Ado:
+                sceneToLoad = "AdoEnding";
                 break;
             default:
-                SceneManager.LoadScene("NormalEnding");
+                sceneToLoad = "NormalEnding";
                 break;
         }
+
+        StartCoroutine(LoadEndingAndReturn(sceneToLoad));
+    }
+
+    private System.Collections.IEnumerator LoadEndingAndReturn(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+        yield return new WaitForSeconds(5f);
+        SceneManager.LoadScene("Menu");
     }
 }

@@ -52,7 +52,6 @@ public class ChoiceEvent : MonoBehaviour
             
         }
 
-
         ChoiceSystem.instance.ClearChoices();
     }
 
@@ -66,7 +65,6 @@ public class ChoiceEvent : MonoBehaviour
             GameProgressManager.instance.AddPoint(skipDenyEnding, skipDenyPoint);
             Debug.Log("Skip after choosing Deny");
             Transition(nextObject);
-            
         }
 
         ChoiceSystem.instance.ClearChoices();

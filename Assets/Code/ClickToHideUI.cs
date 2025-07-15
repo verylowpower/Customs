@@ -7,5 +7,6 @@ public class ClickToHideUI : MonoBehaviour, IPointerClickHandler
     {
         Debug.Log("Hiding: " + gameObject.name);
         gameObject.SetActive(false);
+        
     }
 }
