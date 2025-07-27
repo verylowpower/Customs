@@ -12,7 +12,7 @@ public class GameProgressManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            //DontDestroyOnLoad(gameObject); 
+            //DontDestroyOnLoad(gameObject);
             InitEndingPoints();
         }
         else
@@ -23,18 +23,23 @@ public class GameProgressManager : MonoBehaviour
 
     private void InitEndingPoints()
     {
-        endingPoints.Clear(); 
+        endingPoints.Clear();
         foreach (EndingType type in System.Enum.GetValues(typeof(EndingType)))
         {
             endingPoints[type] = 0;
         }
     }
 
-    public void ResetProgress()
+    public void ResetPoints()
     {
-        InitEndingPoints(); 
-        Debug.Log("GameProgressManager: Progress reset.");
+        foreach (EndingType type in System.Enum.GetValues(typeof(EndingType)))
+        {
+            endingPoints[type] = 0;
+        }
+
+        Debug.Log("GameProgressManager reset.");
     }
+
 
     public void AddPoint(EndingType type, int amount = 1)
     {

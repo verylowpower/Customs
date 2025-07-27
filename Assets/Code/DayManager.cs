@@ -23,7 +23,7 @@ public class DayManager : MonoBehaviour
     void Start()
     {
         packageManager = GameObject.FindWithTag("PackageManager")?.GetComponent<PackageManager>();
-
+        //DontDestroyOnLoad(gameObject);
         if (packageManager == null)
         {
             Debug.LogError("PackageManager not found in scene.");
@@ -47,10 +47,20 @@ public class DayManager : MonoBehaviour
             currentDayObject = Instantiate(dayData.dayPrefab);
             currentDayObject.name = dayData.dayPrefab.name;
 
+            Debug.Log($"Instantiated day prefab: {currentDayObject.name}");
+
             packageManager.AutoAssignPackages(currentDayObject);
+
+            Debug.Log($"Package count: {packageManager.packages.Length}");
+
+            for (int i = 0; i < packageManager.packages.Length; i++)
+            {
+                Debug.Log($"[{i}] PackageObject: {packageManager.packages[i].packageObject?.name}");
+            }
 
             if (packageManager.packages.Length > 0)
             {
+                packageIndex = 0;
                 packageManager.SetCurrentPackage(packageManager.packages[0].packageObject);
             }
 
@@ -61,6 +71,7 @@ public class DayManager : MonoBehaviour
             Debug.LogError("Day prefab is missing in DayData!");
         }
     }
+
 
     public void NextDay()
     {
@@ -82,6 +93,19 @@ public class DayManager : MonoBehaviour
 
         packageIndex = (packageIndex + 1) % packageManager.packages.Length;
         packageManager.SetCurrentPackage(packageManager.packages[packageIndex].packageObject);
+    }
+    public void ResetDay()
+    {
+        currentDay = 0;
+        packageIndex = 0;
+        packageManager = GameObject.FindWithTag("PackageManager")?.GetComponent<PackageManager>();
+        if (currentDayObject != null)
+            Destroy(currentDayObject);
+
+        LoadDay(currentDay);
+
+
+        Debug.Log("DayManager reset to Day 0.");
     }
 
 

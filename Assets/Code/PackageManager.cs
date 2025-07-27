@@ -12,15 +12,21 @@ public class PackageManager : MonoBehaviour
     }
 
     public PackageSet[] packages;
+
     public static PackageManager instance;
 
     [HideInInspector] public GameObject currentNote;
     [HideInInspector] public GameObject currentNews;
 
-   
+
     private GameObject currentPackage;
 
-    void Start() => instance = this;
+    void Start()
+    {
+        //DontDestroyOnLoad(gameObject);
+        instance = this;
+    }
+
 
     public void AutoAssignPackages(GameObject dayRoot)
     {
@@ -30,6 +36,7 @@ public class PackageManager : MonoBehaviour
             return;
         }
 
+        packages = new PackageSet[0];
         var list = new List<PackageSet>();
 
         foreach (Transform package in dayRoot.transform)
@@ -50,12 +57,15 @@ public class PackageManager : MonoBehaviour
         }
 
         packages = list.ToArray();
+        currentPackage = null;
+
         Debug.Log("Auto-assigned " + packages.Length + " packages from " + dayRoot.name);
     }
 
+
     public void SetCurrentPackage(GameObject activePackage)
     {
-      
+
         if (activePackage == currentPackage)
         {
             Debug.Log($"[PackageManager] Package {activePackage.name} is already active, skipping.");

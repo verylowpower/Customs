@@ -15,7 +15,7 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-        
+
         if (DayManager.instance == null) return;
 
         dayText.text = "Day " + (DayManager.instance.currentDay + 1);

@@ -5,11 +5,23 @@ public class Menu : MonoBehaviour
 {
     public void StartButton()
     {
-        if (GameProgressManager.instance != null)
-            GameProgressManager.instance.ResetProgress(); 
 
-        SceneManager.LoadSceneAsync(1); 
+        ResetGameState();
         Time.timeScale = 1f;
+        SceneManager.LoadScene(1);
+    }
+
+    private void ResetGameState()
+    {
+        if (GameProgressManager.instance != null)
+        {
+            GameProgressManager.instance.ResetPoints();
+        }
+
+        if (DayManager.instance != null)
+        {
+            DayManager.instance.ResetDay();
+        }
     }
 
     public void MenuButton()
