@@ -47,27 +47,6 @@ Thông qua việc tương tác và đưa ra lựa chọn (**Choice System**), ng
 * **ScriptableObject** để lưu trữ dữ liệu ngày (DayData)
 * **Prefab-based system** cho quản lý package
 
----
-
-## 📂 Cấu trúc chính
-
-```
-Assets/
- ├── Code/
- │   ├── DayManager.cs          # Quản lý ngày, load/reset Day
- │   ├── PackageManager.cs      # Quản lý package trong mỗi ngày
- │   ├── ChoiceSystem.cs        # Hệ thống lựa chọn
- │   ├── DialogueManager.cs     # Quản lý hội thoại
- │   ├── GameProgressManager.cs # Quản lý điểm Ending
- │   ├── EndingManager.cs       # Xử lý kết thúc game
- │   └── UIManager.cs           # Hiển thị Day, UI gameplay
- ├── Prefabs/
- │   ├── Day0.prefab
- │   ├── Day1.prefab
- │   └── ...
- └── ScriptableObjects/
-     ├── DayData.asset
-```
 
 ---
 
