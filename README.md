@@ -3,8 +3,10 @@
 ## 🎮 Giới thiệu
 
 Đây là một game **Visual Novel kết hợp Point & Click** được phát triển bằng Unity.
-Người chơi sẽ trải qua nhiều **ngày (Day system)**, mỗi ngày chứa các **package** (gói thông tin: mô hình 3D, note, news).
+Người chơi sẽ trải qua nhiều **ngày (Day system)**, mỗi ngày chứa các **package**.
 Thông qua việc tương tác và đưa ra lựa chọn (**Choice System**), người chơi sẽ dần tích lũy điểm số ảnh hưởng đến **Ending System** với nhiều kết cục khác nhau.
+
+Demo: [Customs](https://ye-loathsome.itch.io/customs)
 
 ---
 
